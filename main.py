@@ -1,6 +1,11 @@
 import tkinter as tk
 from tkinter import ttk
 
+try:
+    from ctypes import windll
+    windll.shcore.SetProcessDpiAwareness(1)
+except:
+    pass
 
 def greet():
     print(f"Hello, {user_name.get() or 'World'}!")
@@ -9,6 +14,10 @@ def greet():
 root = tk.Tk()
 root.geometry("600x400")
 
+style = ttk.Style(root)
+
+print(style.theme_names())
+print(style.theme_use("clam"))
 
 user_name = tk.StringVar()
 
